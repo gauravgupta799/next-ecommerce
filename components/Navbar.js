@@ -1,10 +1,17 @@
 import React from "react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AiOutlineShoppingCart} from 'react-icons/ai'
 import { FaUserAlt} from 'react-icons/fa'
 
 const Navbar = () => {
+	const router= useRouter();
+	const isActive =(path)=>{
+	 if(path === router.pathname){
+		return " active"
+	 }
+	}
 	return (
 		<nav className='navbar navbar-expand-lg navbar-light bg-light'>
 			<Link href="/" legacyBehavior >
@@ -27,17 +34,17 @@ const Navbar = () => {
             className='collapse navbar-collapse justify-content-end'
              id='navbarNavDropdown'>
 				<ul className='navbar-nav'>
-					<li className='nav-item active'>
+					<li className="nav-item">
                         <Link href="/cart" legacyBehavior>
-                            <a className='nav-link'>
+                            <a className={` nav-link ${isActive('/cart')}`}>
                             <AiOutlineShoppingCart/>
                                 Cart
                             </a>
                         </Link>
 					</li>
-					<li className='nav-item active'>
+					<li className='nav-item '>
                         <Link href="/signin" legacyBehavior>
-                            <a className='nav-link '>
+                            <a className={`nav-link ${isActive('/signin')}`}>
                             <FaUserAlt/>
                                 SignIn
                             </a>
