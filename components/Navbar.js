@@ -38,7 +38,7 @@ const Navbar = () => {
                         <Link href="/cart" legacyBehavior>
                             <a className={` nav-link ${isActive('/cart')}`}>
                             <AiOutlineShoppingCart/>
-                                Cart
+                                Cart		
                             </a>
                         </Link>
 					</li>
