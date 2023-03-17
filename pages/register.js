@@ -24,7 +24,7 @@ const Register = () => {
 			payload:{ error: errMsg}
 		})
 		dispatch({
-			type:"NOTIFY",
+			type:"AUTH",
 			payload:{loading: true}
 		})
 		const res = await postData("auth/register", userData)
@@ -34,7 +34,7 @@ const Register = () => {
 			}})
 		}
 		return dispatch({
-			type:"NOTIFY",
+			type:"AUTH",
 			payload:{ success:res.msg, loading: false}
 		})
 	}

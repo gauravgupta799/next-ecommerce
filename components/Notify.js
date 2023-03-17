@@ -8,21 +8,19 @@ const Notify = () => {
    const { notify } = state;
     return (
     <>
-    { notify.loading && <Loading/>}
-    { notify.error && 
+    { notify?.loading && <Loading/>}
+    { notify?.error && 
         <Toast 
-            msg={{msg:notify.error, title:"Error"}}
+            msg={{msg:notify?.error, title:"Error"}}
             bgColor="bg-danger"
         />
     }
-    { notify.success && 
+    { notify?.success && 
         <Toast
             msg ={{msg:notify.success, title:"Success"}}
             bgColor="bg-success"
-
         />
     }
-
     </>
   )
 }

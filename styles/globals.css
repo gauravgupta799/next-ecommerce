@@ -103,8 +103,12 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+@import url("./loading.css");
+
+@import url("./products.css");
+
+.dropdown-container{
+  display:flex;
+  align-items:center; 
+  justify-content:space-between;
 }
