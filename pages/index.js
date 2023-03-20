@@ -1,7 +1,7 @@
 import React , {useState} from "react";
 import Head from 'next/head'
 import ProductItem from "@/components/ProductItem";
-
+import {getData} from "../utils/fetchData";
 
 export default function Home(props) {
   const [products , setProducts] = useState(props.products)
@@ -27,24 +27,12 @@ export default function Home(props) {
   )
 }
 
-// export async function getServerSideProps(){
-//   const res = await getData("product");
-//   console.log(res)
-//   return {
-//     props:{
-//       products: res.products,
-//       result: res.result
-//     }
-//   }
-// }
-
 export async function getServerSideProps(){
-  const res = await fetch("http://localhost:3000/api/products");
-  const data = await res.json();
+  const res = await getData("products");
   return {
     props:{
-      products: data.products,
-      result: data.result
+      products: res.products,
+      result: res.result
     }
   }
 }
