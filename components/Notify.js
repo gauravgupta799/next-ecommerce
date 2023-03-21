@@ -4,7 +4,7 @@ import Toast from "./Toast";
 import { DataContext} from "../store/GlobalState"
 
 const Notify = () => {
-    const [ state, dispatch] = useContext(DataContext);
+    const {state, dispatch}= useContext(DataContext);
    const { notify } = state;
     return (
     <>

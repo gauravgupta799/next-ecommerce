@@ -1,9 +1,13 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Link from "next/link";
+import {DataContext} from "../store/GlobalState";
+import { addToCart} from "../store/Actions"
 
 const ProductItem = ({product}) => {
     const {images, title, description, price,inStock, _id} = product;
-    
+    const {state,dispatch} = useContext(DataContext)
+    const {cart} = state
+
     const userLink= ()=>{
         return (
             <>
@@ -16,6 +20,8 @@ const ProductItem = ({product}) => {
                 </Link>
                 <button className='btn btn-success mr-1 flex-fill'
                  style={{width:"40%"}}
+                 disabled={product.inStock === 0 ? true: false}
+                 onClick={()=>dispatch(addToCart(product,cart))}
                 >
                     Buy
                 </button>

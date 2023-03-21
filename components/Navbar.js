@@ -8,8 +8,8 @@ import { DataContext } from "../store/GlobalState";
 import Cookie from "js-cookie";
 
 const Navbar = () => {
-	const [state, dispatch] = useContext( DataContext);
-	const {auth} = state;
+	const {state, dispatch}= useContext( DataContext);
+	const {auth,cart} = state;
 	const router= useRouter();
 
 	const isActive =(path)=>{
@@ -87,8 +87,22 @@ const Navbar = () => {
 				<ul className='navbar-nav'>
 					<li className="nav-item">
                         <Link href="/cart" legacyBehavior>
-                            <a className={` nav-link ${isActive('/cart')}`}>
-                            <AiOutlineShoppingCart/>
+                            <a className={` nav-link ${isActive('/cart')} position-relative` }>
+                            <AiOutlineShoppingCart style={{marginRight: "5px"}}/> 
+							<span className="position-absolute"
+							style={{
+								width: "20px",
+								height: "20px",
+								padding:"2px",
+								top:"-4px", 
+								right:"34px",
+								backgroundColor:"red",
+								borderRadius:"50%",
+								color:"white"
+								}}
+							>
+							{cart.length}
+							</span>
                                 Cart		
                             </a>
                         </Link>

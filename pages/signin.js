@@ -10,9 +10,9 @@ const Signin = () => {
 	const initialState = { email: "", password: "" };
 	const [userData, setUserData] = useState(initialState);
 	const { email, password } = userData;
-  const router = useRouter();
-	const [state, dispatch] = useContext(DataContext);
-  const {auth} = state;
+  	const router = useRouter();
+	const {state, dispatch} = useContext(DataContext);
+  	const {auth} = state;
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setUserData({ ...userData, [name]: value });
@@ -24,7 +24,7 @@ const Signin = () => {
 		dispatch({ type: "NOTIFY", payload: { loading: true }});
 		const res = await postData("auth/login", userData);
 		if (res.err) return dispatch({type: "NOTIFY", payload: {error: res.err }});
-    dispatch({ type: "NOTIFY", payload: { success: res.msg,loading: false }});
+    	dispatch({ type: "NOTIFY", payload: { success: res.msg,loading: false }});
 		dispatch({type: "AUTH", payload: { 
           token:res.access_token,
           user:res.user,
@@ -54,12 +54,12 @@ const Signin = () => {
 					</label>
 					<input
 						type='email'
-            name="email"
+            			name="email"
 						className='form-control'
 						id='exampleInputEmail1'
 						aria-describedby='emailHelp'
-            value={email}
-            onChange={handleChange}
+						value={email}
+						onChange={handleChange}
 					/>
 					<div id='emailHelp' className='form-text'>
 						We'll never share your email with anyone else.
@@ -71,11 +71,11 @@ const Signin = () => {
 					</label>
 					<input
 						type='password'
-            name="password"
+            			name="password"
 						className='form-control'
 						id='exampleInputPassword1'
-            value={password}
-            onChange={handleChange}
+						value={password}
+						onChange={handleChange}
 					/>
 				</div>
 				<button type='submit' className='btn btn-dark w-100 '>
