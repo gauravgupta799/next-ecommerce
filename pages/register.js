@@ -9,7 +9,8 @@ const Register = () => {
 	const [userData, setUserData] = useState(initialState);
     const {name, email, password, conf_password} = userData;
 	
-	const [state, dispatch] = useContext(DataContext)
+	const {state, dispatch} = useContext(DataContext)
+	const {auth} = state;
 	
 	const handleChange=(e)=>{
 		const { name ,value} = e.target;
@@ -38,6 +39,12 @@ const Register = () => {
 			payload:{ success:res.msg, loading: false}
 		})
 	}
+
+	useEffect(()=>{
+		if(Object.keys(auth).length !==0){
+			router.push("/")
+		}
+	},[auth])
 
 	return (
 		<div className="container w-50">

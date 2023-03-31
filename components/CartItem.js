@@ -44,11 +44,17 @@ const CartItem = ({item,dispatch,cart}) => {
         minWidth:"50px",
         cursor:"pointer"
       }}>
-       <BiTrash 
-       className='text-danger' 
-       style={{fontSize:"24px"}}/
-      //  onClick={dispatch(deleteItem())}
-       >
+       <BiTrash className='text-danger' 
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+       style={{fontSize:"24px"}}
+        onClick={()=>dispatch({
+          type:"ADD_MODAL",
+          payload: {
+            data:cart, id:item._id, title:item.title
+          }
+        })}
+       />
       </td>
     </tr>
   )

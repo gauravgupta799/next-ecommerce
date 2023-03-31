@@ -10,6 +10,7 @@ export const DataProvider =({children})=>{
         notify:{},
         auth:{},
         cart:[],
+        madal:{}
     }
     const [state, dispatch] = useReducer(reducers, initialState);
     const { cart } = state;
